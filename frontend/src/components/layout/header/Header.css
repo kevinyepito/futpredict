@@ -1,0 +1,33 @@
+header{
+    background-color: rgb(99, 235, 36);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.topbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 56px;
+    gap: 10px;
+}
+.logo{
+    border-radius: 10px;
+}
+.name-app{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 28px;
+}
+
+body.dark header{
+    background-color: #044517;
+     border-bottom-color: #222;
+}
+
+body.dark .name-app{
+    color: #f0f0f0;
+}
+
+body.dark .logo {
+    background: #fff;
+}

@@ -1,0 +1,60 @@
+.equipo-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 14px;
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+    background: #fff;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.escudo-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.nombre {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta {
+    font-size: 12px;
+    color: #777;
+}
+
+.equipo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+body.dark .equipo-card{
+    background-color: #000;
+    box-shadow: 0 2px 6px rgba(250, 250, 250, 0.8);;
+}
+
+body.dark .equipo-card:hover{
+    box-shadow: 0 4px 12px rgba(250, 250, 250, 0.12);
+
+}
+
+body.dark .nombre{
+    color: #fff;
+}
+
+body.dark .info{
+    color: #777;
+}

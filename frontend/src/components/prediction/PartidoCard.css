@@ -1,0 +1,117 @@
+.partido-card {
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.equipos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.equipo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 40%;
+}
+
+.equipo.visitante {
+    flex-direction: row-reverse;
+}
+
+.equipo span {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.escudo-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.vs {
+    font-size: 12px;
+    font-weight: 500;
+    color: #999;
+}
+
+.probabilidades {
+    justify-content: center;
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 26px;
+    margin-bottom: 10px;
+}
+
+.prob-local {
+    background: #a0fea8;
+    color: #226326;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.prob-empate {
+    background: #f5f5f5;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.prob-visitante {
+    background: #fce4ec;
+    color: #c62828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.goleador {
+    font-size: 12px;
+    color: #888;
+}
+
+.goleador span {
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+body.dark .partido-card {
+    background: #1a1a1a;
+    box-shadow: none;
+    border: 1px solid #2a2a2a;
+}
+
+body.dark .equipo span {
+    color: #ffffff;
+}
+body.dark .equipo{
+    background-color: transparent;
+}
+
+body.dark .prob-empate {
+    background: #2a2a2a;
+    color: #aaa;
+}
+
+body.dark .goleador {
+    color: #888;
+}
+
+body.dark .goleador span {
+    color: #fff;
+}
