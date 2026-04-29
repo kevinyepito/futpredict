@@ -1,17 +1,53 @@
-package com.futpredict.backend.model;
+package com.futpredict.backend.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "partido")
 public class Partido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "equipo_local_id")
     private Equipo equipoLocal;
+
+    @ManyToOne
+    @JoinColumn(name = "equipo_visitante_id")
     private Equipo equipoVisitante;
+
+    @JoinColumn(name = "resultado", nullable = false)
     private String resultado; // "LOCAL", "EMPATE", "VISITANTE"
+
+    @Column(name = "probabilidad_local", nullable = false)
     private double probLocal;
+
+    @Column(name = "probabilidad_empate", nullable = false)
     private double probEmpate;
+
+    @Column(name = "probabilidad_visitante", nullable = false)
     private double probVisitante;
+
+    @Column(name = "goleador_probable", nullable = false)
     private String goleadorProbable;
+
+    @Column(name = "probabilidad_de_anotar", nullable = false)
     private double probGoleador;
 
-    private long id;
+    public Partido(){
+
+    }
+
+    
 
     
 

@@ -1,13 +1,35 @@
-package com.futpredict.backend.model;
+package com.futpredict.backend.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "jugador")
 public class Jugador {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @Column(name = "posicion", nullable = false)
     private String posicion;
+
+    @Column(name = "numero_camiseta", nullable = false)
     private int numeroCamiseta;
+
+    @Column(name = "nacionalidad", nullable = false)
     private String nacionalidad;
 
-    private long id;
+    public Jugador() {
+
+    }
 
     public long getId() {
         return id;

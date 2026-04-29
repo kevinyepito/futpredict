@@ -1,23 +1,40 @@
-package com.futpredict.backend.model;
+package com.futpredict.backend.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "equipo")
 public class Equipo {
-    private String nombre;
-    private String escudo; // url de imagen a futuro
-    private String pais;
-    private String competicion;
-    private List<Jugador> jugadores;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    public long getId() {
-        return id;
-    }
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-    public void setId(long id) {
-        this.id = id;
+    @Column(name = "escudo", nullable = true)
+    private String escudo; // url de imagen a futuro
+
+    @Column(name = "pais", nullable = false)
+    private String pais;
+
+    @Column(name = "competicion", nullable = false)
+    private String competicion;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Jugador> jugadores;
+
+    public Equipo() {
     }
 
     public Equipo(String nombre, String escudo, String pais, String competicion, List<Jugador> jugadores) {
@@ -26,6 +43,14 @@ public class Equipo {
         this.pais = pais;
         this.competicion = competicion;
         this.jugadores = jugadores;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNombre() {

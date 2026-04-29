@@ -9,7 +9,7 @@ export default function PartidoCard({ partido }) {
                         className="escudo-img"
                         src={partido.equipoLocal.escudo}
                         alt="logo"
-                        onError={(e) => e.target.src = "https://via.placeholder.com/30"}
+                        onError={(e) => e.target.style.display = 'none'}
                     />
                     <span>{partido.equipoLocal.nombre}</span>
                 </div>
@@ -24,14 +24,14 @@ export default function PartidoCard({ partido }) {
                         src={partido.equipoVisitante.escudo}
                         alt="logo"
                         onError={(e) =>
-                            e.target.src = "https://via.placeholder.com/30"
+                            e.target.style.display = 'none'
                         }
                     />
                 </div>
 
             </div>
 
-             <div className="probabilidades">
+            <div className="probabilidades">
                 <div className="prob-local" style={{ width: `${partido.probLocal * 100}%` }}>
                     {partido.equipoLocal.nombre}: {(partido.probLocal * 100).toFixed(0)}%
                 </div>

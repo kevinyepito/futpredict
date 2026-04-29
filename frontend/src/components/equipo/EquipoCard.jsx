@@ -7,8 +7,8 @@ export default function EquipoCard({ equipo }) {
                 src={equipo.escudo}
                 alt="logo"
                 onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "https://via.placeholder.com/30";
+                    e.target.onerror = null  
+                    e.target.style.display = 'none'
                 }}
             />
 
