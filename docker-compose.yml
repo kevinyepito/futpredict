@@ -32,6 +32,14 @@ services:
       - "80:80"
     depends_on:
       - backend
+    
+  ia-service:
+    build: ./ia-service
+    container_name: futpredict_ia
+    ports: 
+      - "8000:8000"
+    depends_on:
+      - backend
 
 volumes:
   postgres_data:

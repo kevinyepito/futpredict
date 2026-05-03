@@ -1,0 +1,15 @@
+# Python
+ia-service/venv/
+ia-service/__pycache__/
+ia-service/*.pkl
+ia-service/premier-data.csv
+
+# VS Code
+.vscode/
+
+# Java
+backend/target/
+
+# Node
+frontend/node_modules/
+frontend/dist/

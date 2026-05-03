@@ -1,6 +1,7 @@
 package com.futpredict.backend.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +15,7 @@ import com.futpredict.backend.entity.Equipo;
 import com.futpredict.backend.entity.Jugador;
 import com.futpredict.backend.entity.Partido;
 import com.futpredict.backend.service.EquipoService;
+import com.futpredict.backend.service.IAService;
 import com.futpredict.backend.service.JugadorService;
 import com.futpredict.backend.service.PartidoService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,13 +31,15 @@ public class PrediccionController {
         private final EquipoService equipoService;
         private final JugadorService jugadorService;
         private final PartidoService partidoService;
+        private final IAService iaService;
 
         public PrediccionController(PartidoService partidoService,
                         EquipoService equipoService,
-                        JugadorService jugadorService) {
+                        JugadorService jugadorService, IAService iaService) {
                 this.partidoService = partidoService;
                 this.equipoService = equipoService;
                 this.jugadorService = jugadorService;
+                this.iaService = iaService;
         }
 
         /*
@@ -227,4 +231,11 @@ public class PrediccionController {
 
         // ---------------------------------------
 
+        //servicio de IA 🤖---------------------------------------------------------------------
+        @PostMapping("/predecir")
+        public Map<String, Object> predeMap(@RequestBody Map<String, Object> datos) {
+            
+            return iaService.predecir(datos);
+        }
+        
 }
