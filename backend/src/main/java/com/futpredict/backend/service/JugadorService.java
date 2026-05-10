@@ -1,16 +1,18 @@
 package com.futpredict.backend.service;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.futpredict.backend.entity.Jugador;
 import com.futpredict.backend.repository.JugadorRepository;
 
 @Service
 public class JugadorService {
-    @Autowired
-    private JugadorRepository jugadorRepository;
+    
+    private final JugadorRepository jugadorRepository;
+
+    public JugadorService(JugadorRepository jugadorRepository) {
+        this.jugadorRepository = jugadorRepository;
+    }
 
     public List<Jugador> getAll() {
         return jugadorRepository.findAll();

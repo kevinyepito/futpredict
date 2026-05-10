@@ -2,12 +2,16 @@ package com.futpredict.backend.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -31,8 +35,14 @@ public class Equipo {
     @Column(name = "competicion", nullable = false)
     private String competicion;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "equipo",cascade = CascadeType.ALL)
     private List<Jugador> jugadores;
+
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "liga_id")
+    private Liga liga;
 
     public Equipo() {
     }
@@ -91,6 +101,14 @@ public class Equipo {
 
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
+    }
+
+    public Liga getLiga() {
+        return liga;
+    }
+
+    public void setLiga(Liga liga) {
+        this.liga = liga;
     }
 
 }

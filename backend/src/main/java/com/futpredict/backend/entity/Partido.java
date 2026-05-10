@@ -1,5 +1,7 @@
 package com.futpredict.backend.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +27,7 @@ public class Partido {
     @JoinColumn(name = "equipo_visitante_id")
     private Equipo equipoVisitante;
 
-    @JoinColumn(name = "resultado", nullable = false)
+    @Column(name = "resultado", nullable = true)
     private String resultado; // "LOCAL", "EMPATE", "VISITANTE"
 
     @Column(name = "probabilidad_local", nullable = false)
@@ -37,19 +39,27 @@ public class Partido {
     @Column(name = "probabilidad_visitante", nullable = false)
     private double probVisitante;
 
-    @Column(name = "goleador_probable", nullable = false)
+    @Column(name = "goleador_probable", nullable = true)
     private String goleadorProbable;
 
     @Column(name = "probabilidad_de_anotar", nullable = false)
     private double probGoleador;
 
-    public Partido(){
+    @Column(name = "fecha_partido")
+    private LocalDateTime fechaPartido;
+    
+    @Column(name = "estado")
+    private String estado;
+
+    @Column(name = "jornada")
+    private int jornada;
+
+    @Column(name = "resultado_real")
+    private String resultadoReal;
+
+    public Partido() {
 
     }
-
-    
-
-    
 
     public long getId() {
         return id;
@@ -62,6 +72,38 @@ public class Partido {
     public Partido(Equipo equipoLocal, Equipo equipoVisitante) {
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
+    }
+
+    public LocalDateTime getFechaPartido() {
+        return fechaPartido;
+    }
+
+    public void setFechaPartido(LocalDateTime fechaPartido) {
+        this.fechaPartido = fechaPartido;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public int getJornada() {
+        return jornada;
+    }
+
+    public void setJornada(int jornada) {
+        this.jornada = jornada;
+    }
+
+    public String getResultadoReal() {
+        return resultadoReal;
+    }
+
+    public void setResultadoReal(String resultadoReal) {
+        this.resultadoReal = resultadoReal;
     }
 
     public Equipo getEquipoLocal() {

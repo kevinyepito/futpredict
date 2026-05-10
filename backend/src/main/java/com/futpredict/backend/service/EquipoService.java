@@ -1,6 +1,6 @@
 package com.futpredict.backend.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import com.futpredict.backend.entity.Equipo;
 import com.futpredict.backend.repository.EquipoRepository;
@@ -8,8 +8,11 @@ import java.util.List;
 
 @Service
 public class EquipoService {
-    @Autowired
-    private EquipoRepository equipoRepository;
+
+    private final EquipoRepository equipoRepository;
+    public EquipoService(EquipoRepository equipoRepository){
+        this.equipoRepository = equipoRepository;
+    }
 
     public List<Equipo> getAll() {
         return equipoRepository.findAll();

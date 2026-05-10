@@ -1,10 +1,14 @@
 package com.futpredict.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +31,11 @@ public class Jugador {
     @Column(name = "nacionalidad", nullable = false)
     private String nacionalidad;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "equipo_id")
+    private Equipo equipo;
+
     public Jugador() {
 
     }
@@ -35,15 +44,24 @@ public class Jugador {
         return id;
     }
 
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
 
-    public Jugador(String nombre, String posicion, int numeroCamiseta, String nacionalidad) {
+    public Jugador(String nombre, String posicion, int numeroCamiseta, String nacionalidad, Equipo equipo) {
         this.nombre = nombre;
         this.posicion = posicion;
         this.numeroCamiseta = numeroCamiseta;
         this.nacionalidad = nacionalidad;
+        this.equipo = equipo;
     }
 
     public String getNombre() {

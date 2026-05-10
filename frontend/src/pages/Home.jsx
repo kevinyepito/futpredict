@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
-import { data, useNavigate } from "react-router-dom";
-import { getPredictions } from "../services/PredictionsService";
-import PartidoCard from "../components/prediction/PartidoCard";
+import { useNavigate } from "react-router-dom";
+import { getPartidos } from "../services/PartidoService"
+import PartidoCard from "../components/partidos/PartidoCard";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import ErrorMessage from "../components/common/ErrorMessage";
 
 export default function Home() {
     const navigate = useNavigate();
-    const [predicciones, setPredicciones] = useState([]);
+    const [partidos, setPartidos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        getPredictions().then(data => setPredicciones(data))
+        getPartidos().then(data => setPartidos(data))
         .catch(() => setError("no se pueden cargar las predicciones"))
         .finally(() => setCargando(false))
-    }, [2]);
+    }, []);
 
     
     if (cargando) return <LoadingSpinner/>
     if (error != null) return <ErrorMessage/>
 
     //tomar ultimos 3
-    const ultimas_predicciones = predicciones.slice(0, 3);
+    const ultimas_predicciones = partidos.slice(0, 3);
 
     return (
         <div className="home">
@@ -38,7 +38,7 @@ export default function Home() {
                         <PartidoCard key={p.id} partido={p} />
                     ))
                 )}
-                <button className="prediccion-btn" onClick={() => navigate('/predicciones')}>Ver todas las predicciones</button>
+                <button className="prediccion-btn" onClick={() => navigate('/partidos')}>Ver todas las predicciones</button>
 
 
             </section>

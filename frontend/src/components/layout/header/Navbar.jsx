@@ -4,11 +4,11 @@ import './Navbar.css'
 function Navbar() {
     //links-opciones que irán en la navbar
     const links = [
-        { label: 'Competencias', path: '/competencias' },
+        { label: 'Ligas', path: '/ligas' },
         { label: 'Partidos', path: '/partidos' },
         { label: 'Equipos', path: '/equipos' },
         { label: 'Jugadores', path: '/jugadores' },
-        { label: 'Predicciones', path: '/predicciones' }
+        { label: 'simular partido', path: '/simular-partido' }
     ]
 
     return (
